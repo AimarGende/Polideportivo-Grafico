@@ -19,8 +19,10 @@ public class ControladorPrincipal implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== principal.ActividadBTN) {
-			ActividadFormulario form = new ActividadFormulario();
+
+			ActividadFormulario form = new ActividadFormulario(principal, true);
 			
+			ControladorActividad cont = new ControladorActividad();
 			form.setVisible(true);
 		}
 		
