@@ -3,6 +3,7 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UsuarioModelo extends Conector{
 
@@ -10,7 +11,7 @@ public class UsuarioModelo extends Conector{
 	String sentencia;
 	
 	
-	public void insertarUsuario(Usuario usuario)  {
+	public boolean insertarUsuario(Usuario usuario)  {
 		sentencia="INSERT INTO usuarios (nombre_apellido,dni,codigo) VALUES(?,?,?)";
 		getConexion();
 		try {
@@ -21,9 +22,11 @@ public class UsuarioModelo extends Conector{
 			pt.setString(3, usuario.getCodigo());
 			
 			pt.execute();
+			return true;
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -77,12 +80,12 @@ public class UsuarioModelo extends Conector{
 		return usu;
 	}
 
-	public boolean eliminarUsuario(int id) {
+	public boolean eliminarUsuario(Usuario usuario) {
 		sentencia="DELETE FROM usuarios WHERE id=?";
 		
 		try {
 			pt=getConexion().prepareStatement(sentencia);
-			pt.setInt(1, id);
+			pt.setInt(1, usuario.getId());
 			
 			pt.execute();
 			return true;
@@ -93,21 +96,7 @@ public class UsuarioModelo extends Conector{
 		}		
 	}
 	
-	public boolean eliminarUsuario(String codigo) {
-		sentencia="DELETE FROM usuarios WHERE codigo=?";
-		
-		try {
-			pt=getConexion().prepareStatement(sentencia);
-			pt.setString(1, codigo);
-			
-			pt.execute();
-			return true;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}		
-	}
+	
 	
 	public boolean modificarUsuario(Usuario usuario) {
 		sentencia="UPDATE usuarios SET nombre_apellido=?, dni=?, codigo=? WHERE id=?";
@@ -128,5 +117,31 @@ public class UsuarioModelo extends Conector{
 			return false;
 		}
 		
+	}
+	
+	public ArrayList<Usuario> getUsuarios(){
+		ArrayList<Usuario> usuarios=new ArrayList<Usuario>();
+		sentencia="SELECT *  FROM usuarios";
+		
+		try {
+			pt=getConexion().prepareStatement(sentencia);
+			
+			ResultSet result=pt.executeQuery();
+			
+			while(result.next()) {
+				Usuario usuario = new Usuario();
+				
+				usuario.setId(result.getInt("id"));
+				usuario.setNombre_apellido(result.getString("nombre_apellido"));
+				usuario.setDni(result.getString("dni"));
+				usuario.setCodigo(result.getString("codigo"));
+				
+				usuarios.add(usuario);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return usuarios;
 	}
 }
