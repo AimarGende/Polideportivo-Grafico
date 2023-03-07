@@ -20,7 +20,15 @@ public class Conector {
 			}
 			
 	}
-
+	
+	public void cerrar() {
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Connection getConexion() {
 		return conexion;
 	}
