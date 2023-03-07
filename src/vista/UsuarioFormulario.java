@@ -178,4 +178,11 @@ public class UsuarioFormulario extends JDialog {
 		dniUsuarioText.setText(usuario.getDni());
 		codigoUsuarioText.setText(usuario.getCodigo());
 	}
+	
+	public void rellenarCamposDeSeleccionDeTabla(int row) {
+		idUsuarioText.setText(String.valueOf(tableModel.getValueAt(row, tableModel.findColumn("id"))));
+		codigoUsuarioText.setText(String.valueOf(tableModel.getValueAt(row, tableModel.findColumn("codigo"))));
+		NombreUsuarioText.setText(String.valueOf(tableModel.getValueAt(row, tableModel.findColumn("nombre"))));
+		dniUsuarioText.setText(String.valueOf(tableModel.getValueAt(row, tableModel.findColumn("dni"))));		
+	}
 }

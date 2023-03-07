@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import modelo.Usuario;
 import modelo.UsuarioModelo;
@@ -111,7 +112,9 @@ public class ControladorUsuario  implements ActionListener, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		JTable source = (JTable)e.getSource();
+        int row = source.rowAtPoint( e.getPoint() );
+        formularioUsuario.rellenarCamposDeSeleccionDeTabla(row);
 		
 	}
 
