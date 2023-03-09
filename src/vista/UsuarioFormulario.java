@@ -185,4 +185,9 @@ public class UsuarioFormulario extends JDialog {
 		NombreUsuarioText.setText(String.valueOf(tableModel.getValueAt(row, tableModel.findColumn("nombre"))));
 		dniUsuarioText.setText(String.valueOf(tableModel.getValueAt(row, tableModel.findColumn("dni"))));		
 	}
+	public void limpiarTablaProductos() {
+		for (int i = this.tableModel.getRowCount() - 1; i >= 0; i--) {
+			this.tableModel.removeRow(i);
+		}
+	}
 }

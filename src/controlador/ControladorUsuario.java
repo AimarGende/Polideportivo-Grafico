@@ -57,6 +57,7 @@ public class ControladorUsuario  implements ActionListener, MouseListener{
 			ArrayList<Usuario> usuarios = usuarioM.getUsuarios();
 			usuarioM.cerrar();
 
+			formularioUsuario.limpiarTablaProductos();
 			formularioUsuario.rellenarTabla(usuarios);
 		}
 		
@@ -85,7 +86,7 @@ public class ControladorUsuario  implements ActionListener, MouseListener{
 			}
 			ArrayList<Usuario> usuarios = usuarioM.getUsuarios();
 			usuarioM.cerrar();
-
+			formularioUsuario.limpiarTablaProductos();
 			formularioUsuario.rellenarTabla(usuarios);
 		}
 		
@@ -106,6 +107,7 @@ public class ControladorUsuario  implements ActionListener, MouseListener{
 			ArrayList<Usuario> usuarios = usuarioM.getUsuarios();
 			usuarioM.cerrar();
 
+			formularioUsuario.limpiarTablaProductos();
 			formularioUsuario.rellenarTabla(usuarios);
 		}
 	}
