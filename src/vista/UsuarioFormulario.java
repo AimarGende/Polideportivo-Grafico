@@ -149,7 +149,6 @@ public class UsuarioFormulario extends JDialog {
 	
 	public Usuario getDatosUsuario() {
 		Usuario usuario=new Usuario();
-		usuario.setId(Integer.parseInt(idUsuarioText.getText()));
 		usuario.setNombre_apellido(NombreUsuarioText.getText());
 		usuario.setDni(dniUsuarioText.getText());
 		usuario.setCodigo(codigoUsuarioText.getText());
