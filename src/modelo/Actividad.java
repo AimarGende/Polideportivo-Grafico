@@ -1,16 +1,18 @@
 package modelo;
 
+import java.util.Date;
+
 public class Actividad {
 	
 	int id;
 	String nombre;
-	String fecha_inicio;
+	Date fecha_inicio;
 	String dias_semana;
 	int horas;
 	int max_participantes;
 	double precio;
 	
-	public Actividad(int id, String nombre, String fecha_inicio, String dias_semana, int horas, int max_participantes,
+	public Actividad(int id, String nombre, Date fecha_inicio, String dias_semana, int horas, int max_participantes,
 			double precio) {
 		this.id = id;
 		this.nombre = nombre;
@@ -41,11 +43,11 @@ public class Actividad {
 		this.nombre = nombre;
 	}
 
-	public String getFecha_inicio() {
+	public Date getFecha_inicio() {
 		return fecha_inicio;
 	}
 
-	public void setFecha_inicio(String fecha_inicio) {
+	public void setFecha_inicio(Date fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
 
